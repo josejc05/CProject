@@ -1,0 +1,22 @@
+# ninja log v5
+32	186	7821616235289271	CMakeFiles/ParkingSimulator.dir/src/ui.c.obj	f444b01449bacd6c
+1	192	7821616235289271	CMakeFiles/ParkingSimulator.dir/src/main.c.obj	f8e93b1525f42d90
+21	194	7821616235301561	CMakeFiles/ParkingSimulator.dir/src/map.c.obj	7203f9ec0a3bb0da
+7	194	7821616235301561	CMakeFiles/ParkingSimulator.dir/src/game.c.obj	6949f82900a763e9
+16	195	7821616235301561	CMakeFiles/ParkingSimulator.dir/src/list.c.obj	4c8d1938d911d8a6
+12	196	7821616235289271	CMakeFiles/ParkingSimulator.dir/src/vehicle.c.obj	ce46676f73737be2
+36	196	7821616235314978	CMakeFiles/ParkingSimulator.dir/src/utils.c.obj	5dc22905b3de8327
+29	197	7821616235301561	CMakeFiles/ParkingSimulator.dir/src/sound.c.obj	de9382537dc1d60b
+5	83	7821618914107076	CMakeFiles/ParkingSimulator.dir/src/input.c.obj	9dc129a59bbe7be2
+11	128	7826463985853927	CMakeFiles/ParkingSimulator.dir/src/map.c.obj	7203f9ec0a3bb0da
+6	138	7826463986002825	CMakeFiles/ParkingSimulator.dir/src/main.c.obj	f8e93b1525f42d90
+2	139	7826463986002825	CMakeFiles/ParkingSimulator.dir/src/game.c.obj	6949f82900a763e9
+14	146	7826463986106034	CMakeFiles/ParkingSimulator.dir/src/vehicle.c.obj	ce46676f73737be2
+1	86	7826464982031402	CMakeFiles/ParkingSimulator.dir/src/utils.c.obj	5dc22905b3de8327
+86	184	7826464982976767	ParkingSimulator.exe	37549a02117e7855
+10	108	7826467996520965	CMakeFiles/ParkingSimulator.dir/src/ui.c.obj	f444b01449bacd6c
+2	109	7826467996566965	CMakeFiles/ParkingSimulator.dir/src/game.c.obj	6949f82900a763e9
+6	112	7826467996666970	CMakeFiles/ParkingSimulator.dir/src/utils.c.obj	5dc22905b3de8327
+112	191	7826467997406925	ParkingSimulator.exe	37549a02117e7855
+2	90	7826469777047849	CMakeFiles/ParkingSimulator.dir/src/map.c.obj	7203f9ec0a3bb0da
+90	173	7826469777835432	ParkingSimulator.exe	37549a02117e7855
