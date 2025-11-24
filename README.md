@@ -1,5 +1,5 @@
 # CProject
 
-dwas --> move
-c --> clear
+dwas --> move, 
+c --> clear, 
 q --> exit
