@@ -5,8 +5,8 @@ This project is a terminal-based ASCII Parking Lot Simulation, designed and impl
 
 The primary goal of this project is to model vehicle behavior in a constrained parking environment, including pathfinding, collision detection, and dynamic parking management. Additionally, the simulation incorporates a “Busy Mode”, which introduces variable crash scenarios, adding unpredictability and complexity to the system.
 
-Features
-Simulation Environment
+## Features
+### Simulation Environment
 
 - Fully enclosed ASCII-based parking lot with top, bottom, left, and right borders.
 
@@ -16,7 +16,7 @@ Simulation Environment
 
 - A dynamic number of autonomous cars, configurable at runtime.
 
-Vehicle Behavior
+### Vehicle Behavior
 
 Each vehicle has multiple states:
 
@@ -40,7 +40,7 @@ Vehicles can autonomously navigate the parking lot using a simple pathfinding al
 
 Cars select the nearest available parking slot and move toward it, reserving the slot during navigation.
 
-Collision and Damage System
+### Collision and Damage System
 
 A comprehensive collision detection system checks for:
 
@@ -58,7 +58,7 @@ Busy Mode introduces the possibility of random crashes, simulating high-traffic 
 
 Vehicles that collide free up their reserved slots and adjust their movement accordingly.
 
-User Interaction
+### User Interaction
 
 Welcome Menu:
 
@@ -78,8 +78,8 @@ End Menu:
 
 - Summary statistics including crashed cars and total simulation duration
 
-Technical Details
-Implementation
+## Technical Details
+### Implementation
 
 Written in C, leveraging ANSI escape codes for terminal graphics.
 
@@ -101,7 +101,7 @@ Dynamic color coding using ANSI codes:
 
 Autonomous vehicle generation ensures non-overlapping spawn points and staggered entry to prevent immediate congestion.
 
-Simulation Logic
+### Simulation Logic
 
 Vehicles continuously move towards their assigned target or exit while avoiding collisions.
 
@@ -115,7 +115,7 @@ Parking behavior is randomized:
 
 - Selection of nearest free slot with slight random bias
 
-Input and Output
+### Input and Output
 
 Input:
 
@@ -131,7 +131,7 @@ Output:
 
 - Status bar with current simulation metrics
 
-Usage Instructions
+## Usage Instructions
 
 1. Compile the project using any standard C compiler:
 gcc parking_simulation.c -o parking_sim
@@ -149,7 +149,7 @@ gcc parking_simulation.c -o parking_sim
 
 7. At the end, view the simulation summary with performance and crash statistics.
 
-Project Significance
+## Project Significance
 
 This simulation serves as a pedagogical tool for understanding traffic dynamics and parking lot management. It demonstrates:
 
@@ -163,5 +163,5 @@ This simulation serves as a pedagogical tool for understanding traffic dynamics 
 
 By simulating autonomous vehicles in a simplified parking lot, we can explore vehicle behavior, decision-making, and congestion scenarios in a controlled environment. The addition of Busy Mode allows the simulation to mimic high-density parking conditions, providing insight into crash prevention and traffic flow optimization.
 
-Authors
+## Authors
 Dimitri Odinot and Jose Jurado
