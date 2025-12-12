@@ -1,5 +1,5 @@
-ASCII Parking Lot Simulation
-Overview
+# ASCII Parking Lot Simulation
+## Overview
 
 This project is a terminal-based ASCII Parking Lot Simulation, designed and implemented collaboratively by two developers. It simulates autonomous vehicles entering, navigating, parking, and exiting a parking lot in real time. The program visualizes cars, parking slots, and traffic interactions entirely using ASCII characters, creating a lightweight yet dynamic simulation environment.
 
