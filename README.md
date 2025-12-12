@@ -1,167 +1,166 @@
-# ASCII Parking Lot Simulation
-## Overview
+# ASCII Parking Simulation
+## Review
 
-This project is a terminal-based ASCII Parking Lot Simulation, designed and implemented collaboratively by two developers. It simulates autonomous vehicles entering, navigating, parking, and exiting a parking lot in real time. The program visualizes cars, parking slots, and traffic interactions entirely using ASCII characters, creating a lightweight yet dynamic simulation environment.
+We have created and implemented cooperatively a terminal-based ASCII Parking Simulation in this project. It dynamically models autonomous cars entering, negotiating, parking, and leaving a parking lot. By using only ASCII characters, the software shows cars, parking places and traffic interactions in a lightweight but active simulation environment.
 
-The primary goal of this project is to model vehicle behavior in a constrained parking environment, including pathfinding, collision detection, and dynamic parking management. Additionally, the simulation incorporates a “Busy Mode”, which introduces variable crash scenarios, adding unpredictability and complexity to the system.
+The main objective of this project is to simulate automobile behavior in a limited parking environment, including route finding, collision avoidance and dynamic parking management. This simulation also has a Busy Mode, that adds more complexity and uncertainty to the system by making different types of crashes.
 
-## Features
-### Simulation Environment
+ ## Qualities
+ ### Simulated Setting
 
-- Fully enclosed ASCII-based parking lot with top, bottom, left, and right borders.
+ - A completely enclosed ASCII-based parking lot with borders at the top, bottom, left, and right
 
-- Entry and exit doors for cars, clearly indicated in the visualization.
+ - The car entry and exit doors are clearly marked in the image
+   
+ - Automatic creation of several parking spaces each able to monitor reservations and occupancy
 
-- Automatic generation of multiple parking slots, each capable of tracking occupancy and reservations.
+ - runtime adjustable dynamic number of autonomous cars
 
-- A dynamic number of autonomous cars, configurable at runtime.
+### Vehicle Response
 
-### Vehicle Behavior
+In the parking, every car has several states:
 
-Each vehicle has multiple states:
+ - Moving (M): Looking for a parking spot or getting out of the lot
 
-- Moving (M): Searching for a parking slot or leaving the lot.
+ - Looking for/reserving (R): For moving toward a parking spot that is reserved
+   
+ - Parked (P): Briefly parked for an unknown length of time
 
-- Reserved/Seeking (R): Heading toward a reserved parking slot.
+ - Leaving (L): Leaving the parking area
 
-- Parked (P): Temporarily parked for a random duration.
+ - Waiting (W): Time it takes for a spawn to appear before it can enter the lot
 
-- Leaving (L): Exiting the parking lot.
+ - Despawned (D): Left the simulation
 
-- Waiting (W): Spawn delay before entering the lot.
+ - Damage (S): Reduced speed momentarily as a result of a small accident
 
-- Despawned (D): Exited the simulation.
+ - Crashed/Broken (C): A vehicle that has crashed completely, shown in red
 
-- Slowed/Damaged (S): Temporarily slowed due to minor collision.
+We have used a simple pathfinding method that can prevent contacts with walls, other cars and parking spaces, cars can automatically move around the parking lot.
 
-- Crashed/Broken (C): Fully crashed vehicle, visualized in red.
+Every car choose the closest open parking spot and drive toward it, so that they reserve the spot during navigation.
 
-Vehicles can autonomously navigate the parking lot using a simple pathfinding algorithm that avoids collisions with walls, other cars, and parking slots.
+### Damage and Collision Mechanism
 
-Cars select the nearest available parking slot and move toward it, reserving the slot during navigation.
+An all-encompassing collision detection system looks for:
 
-### Collision and Damage System
+ - The vehicle-to-vehicle collisions
 
-A comprehensive collision detection system checks for:
+ - The vehicle-to-wall impact
 
-- Vehicle-to-vehicle collisions
+ - The collisions between cars and parking spaces
 
-- Vehicle-to-wall collisions
+Busy Mode mimics high-traffic circumstances by offering the chance of random crashes (two possibilities):
 
-- Vehicle-to-parking-slot collisions
+ - 1 in 3 probability of a serious collision (car turns red and stops)
 
-Busy Mode introduces the possibility of random crashes, simulating high-traffic conditions:
+ - 2 in 3 probability of moderate injury (orange, sluggish movement)
 
-- 1/3 chance of a severe crash (car becomes red and inactive)
+The cars that crash open their reserved spots and change their motion in response.
 
-- 2/3 chance of minor damage (orange, slower movement)
+### User Engagement
 
-Vehicles that collide free up their reserved slots and adjust their movement accordingly.
+Hello Menu:
 
-### User Interaction
+ - Adjustable car count (1–20)
 
-Welcome Menu:
-
-- Configurable number of cars (1–20)
-
-- Option to enable or disable Busy Mode
+ - Choice to turn Busy Mode ON or OFF
 
 Real-time Information:
 
-- Active, parked, and crashed vehicles
+Vehicles in use, parked, and damaged in accidents
 
-- Elapsed simulation time
+ - The time spent in simulation
 
-- Completed vs total cars
+ - The total of cars versus completed cars
 
 End Menu:
 
-- Summary statistics including crashed cars and total simulation duration
+ - Some summary data including whole simulation time and damaged vehicles
 
-## Technical Details
+## Technical Information
 ### Implementation
 
-Written in C, leveraging ANSI escape codes for terminal graphics.
+The project is written in C, using ANSI escape codes for the terminal graphics.
 
-Raw mode terminal control allows real-time input handling and smooth rendering.
+Raw mode terminal can control enables smooth rendering and also real-time input handling.
 
-Modular design using structs and arrays for cars and parking slots:
+Cars and parking slots using structs and arrays in modular design:
 
-- VEHICULE struct represents each car with attributes for position, speed, state, and target parking slot.
+ - Every car in VEHICULE has his own characteristics (speed, state, position and assigned parking spot)
 
-- PARKING_SLOT struct tracks each parking spot’s position, dimensions, occupancy, and reservation.
+ - The PARKING_SLOT records reservation, position, size, and occupancy as well as each parking spot's dimensions
 
-Dynamic color coding using ANSI codes:
+Utilizing ANSI codes for dynamic color coding:
 
-- Green: Moving or parked cars
+ - Green: The car is moving or is parked
 
-- Orange: Slowed/Damaged cars
+ - Orange: The car is slowed or damaged
 
-- Red: Crashed/Broken cars
+ - Red: The vehicle is wrecked/broken
 
-Autonomous vehicle generation ensures non-overlapping spawn points and staggered entry to prevent immediate congestion.
+Thanks to the generation of autonomous vehicles we can guarantee non-overlapping spawn locations and a staggered arrival so that we can avoid a rapid congestion.
 
-### Simulation Logic
+ ### Simulating Logic
 
-Vehicles continuously move towards their assigned target or exit while avoiding collisions.
+Cars keep moving towards their target or leave to avoid hitting each other.
 
-Stuck vehicles dynamically adjust their behavior, resetting reservations if they cannot reach their target.
+Stuck cars change their behavior dynamically --> re-setting reservations if they can't reach their goal.
 
-The main loop updates positions at ~60 frames per second, clearing and redrawing the screen to simulate smooth movement.
+To create seamless movement, the main loop refreshes positions (about 60 frames per second), clearing and redrawing the screen.
 
-Parking behavior is randomized:
+Parking habits behaves random:
 
-- Duration in parking slot
+ - The time the car spent in parking spot
 
-- Selection of nearest free slot with slight random bias
+ - Select closest free slot somewhat randomly
 
-### Input and Output
+ ### Input and Output
 
 Input:
 
-- Number of vehicles
+ - The quantity of automobiles
 
-- Busy Mode activation
+ - Activating Busy Mode
 
-- Quit command (q) during simulation
+ - The exit command (q) during simulation
 
 Output:
 
-- Real-time ASCII visualization of parking lot, cars, and slots
+ - The live ASCII parking lot, car, and slot visualization
 
-- Status bar with current simulation metrics
+ - The status bar showing the current simulation metrics
 
-## Usage Instructions
+## Guidelines for our proyect
 
-1. Compile the project using any standard C compiler:
-gcc parking_simulation.c -o parking_sim
+ 1. How to assemble the project with any typical C compiler:
+ gcc parking_simulation.c -o parking_sim
 
-2. Ensure carmodelfront.txt is in the same directory, containing the ASCII car model.
+ 2. We have to make sure the ASCII car model is in the same directory
+ 
+ 3. Simulate it by writing: ./parking_sim
 
-3. Run the simulation:
-./parking_sim
+ 4. You can set the number of cars and activate Busy Mode by following the on-screen menu
 
-4. Follow the on-screen menu to configure the number of cars and enable Busy Mode.
+ 5. Press Enter to run the simulation
 
-5. Press ENTER to start the simulation.
+ 6. Quit early by pressing q at any time
 
-6. Press q at any time to quit early.
+ 7. See at last the simulation summary including crash and performance data
 
-7. At the end, view the simulation summary with performance and crash statistics.
+## Project Relevance
 
-## Project Significance
+ Understanding traffic dynamics and parking lot management is made easier with this simulation, which is a teaching tool. It shows:
 
-This simulation serves as a pedagogical tool for understanding traffic dynamics and parking lot management. It demonstrates:
+ - C object-oriented concepts with structs
 
-- Object-oriented thinking in C using structs
+ - Methods of real-time simulation in terminal settings
 
-- Real-time simulation techniques in terminal environments
+ - Collision detection and pathfinding in limited environments
 
-- Collision detection and pathfinding in constrained spaces
+ - Probability-based results and randomized occurrences for greater realism
 
-- Randomized events and probability-based outcomes for enhanced realism
+Simulating autonomous vehicles in a small parking lot lets us examine how the vehicle behaves, the decision-making and congestion patterns under controlled conditions. Adding Busy Mode helps the simulation reflect densely packed parking situations, which sheds light on traffic flow improvement and crash avoidance.
 
-By simulating autonomous vehicles in a simplified parking lot, we can explore vehicle behavior, decision-making, and congestion scenarios in a controlled environment. The addition of Busy Mode allows the simulation to mimic high-density parking conditions, providing insight into crash prevention and traffic flow optimization.
-
-## Authors
-Dimitri Odinot and Jose Jurado
+## Author
+ Dimitri Odinot and Jose Jurado
